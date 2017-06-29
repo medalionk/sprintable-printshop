@@ -7,11 +7,11 @@ import {
 import SettingsList from 'react-native-settings-list';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import { titles } from '../../strings';
+import { strings } from '../../strings';
 import { colors } from '../../styles';
 import Toolbar from '../../components/Toolbar';
 import Container from '../../container';
-import ItemRootPage from '../../pages/ItemRoot'
+import ProfileContainer from '../Profile/ProfileContainer'
 
 const ItemIconSize = 30;
 const ItemWidth = 70;
@@ -29,7 +29,7 @@ class SettingsContainer extends Component {
   }
 
   onProfilePush(){
-        this.props.navigator.push({title: titles.details, Page: ItemRootPage, navigator:this.props.navigator})
+        this.props.navigator.push({title: strings.profile, Page: ProfileContainer, navigator:this.props.navigator})
   }
 
   render() {

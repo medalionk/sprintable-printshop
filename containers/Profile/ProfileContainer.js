@@ -1,44 +1,38 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, StyleSheet } from 'react-native';
+import { AppRegistry, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { Card, ListItem, Button, Tile, Rating } from 'react-native-elements'
 
 import Container from '../../container';
-import Toolbar from '../../components/Toolbar';
+import EditProfileContainer from '../Profile/EditProfileContainer'
+import Toolbar from '../../components/ToolbarBack';
+import { strings } from '../../strings';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  picture: {
-    height: 120,
-    width: 200,
-    borderRadius: 0,
-  },
+const { height } = Dimensions.get('window');
 
-  photoContainer: {
-    height: 200,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-});
-
-class Profile extends Component {
+class ProfileContainer extends Component {
+  onEditPush(){
+        this.props.navigator.push({
+          title: strings.editProfile, 
+          Page: EditProfileContainer, 
+          navigator:this.props.navigator})
+  }
+  
   render() {
     return (
       <Container>
-          <Toolbar title='Profile' navigator={this.props.navigator}/>
-          <Card 
+          <Toolbar route={{title: strings.profile}} navigator={this.props.navigator}/>
+          <ScrollView>
+            <Card 
               title='John Kato' 
               image={{uri: "https://randomuser.me/api/portraits/men/97.jpg"}} 
-              imageStyle={styles.photoContainer}>
-              <Text style={{marginBottom: 10}}>
+              imageStyle={styles.image}>
+              <Text style={styles.text}>
                 Lorem ipsum dolor sit amet, consectetur
               </Text>
-              <Text style={{marginBottom: 10}}>
+              <Text style={styles.text}>
                 Lorem ipsum dolor sit amet, consectetur
               </Text>
-              <Text style={{marginBottom: 10}}>
+              <Text style={styles.text}>
                 Lorem ipsum dolor sit amet, consectetur
               </Text>
               <Rating
@@ -49,16 +43,37 @@ class Profile extends Component {
                 style={{ paddingVertical: 10 }}
               />
               <Button
-                icon={{name: 'message'}}
+                icon={{name: 'edit'}}
                 backgroundColor='#03A9F4'               
-                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                title='Message' />
-        </Card>
+                buttonStyle={styles.button}
+                title={strings.editProfile} 
+                onPress={() => { this.onEditPush()}}/>
+            </Card>
+          </ScrollView>
       </Container>
-      
-      //<Text>Profile!</Text>
     );
   }
 }
 
-export default Profile;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  image: {
+    height: height * .4,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  text: {
+    marginBottom: 10,
+  },
+  button: {
+    borderRadius: 0, 
+    marginLeft: 0, 
+    marginRight: 0, 
+    marginBottom: 0
+  },
+});
+
+export default ProfileContainer;

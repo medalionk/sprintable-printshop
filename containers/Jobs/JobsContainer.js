@@ -4,7 +4,7 @@ import {
   ListView,
   View
 } from 'react-native';
-import { titles } from '../../strings';
+import { strings } from '../../strings';
 import { colors } from '../../styles';
 
 
@@ -29,13 +29,13 @@ class JobsContainer extends Component {
   }
 
   viewJob(id){
-        this.props.navigator.push({title: titles.details, Page: ItemRootPage, navigator:this.props.navigator})
+        this.props.navigator.push({title: strings.details, Page: ItemRootPage, navigator:this.props.navigator})
   }
 
   render() {
     return (
       <Container>
-        <Toolbar route={{title: titles.jobs}} navigator={this.props.navigator}/>
+        <Toolbar route={{title: strings.jobs}} navigator={this.props.navigator}/>
         <View style={styles.container}>
                 <ListView
                   style={styles.container}
