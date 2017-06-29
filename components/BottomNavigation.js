@@ -3,21 +3,21 @@ import { BottomNavigation, Icon } from 'react-native-material-ui';
 
 import Container from '../container';
 
-import OpenJobsPage from '../pages/OpenJobs'
+import JobsContainer from '../containers/Jobs/JobsContainer'
 import WipPage from '../pages/WIP'
-import SettingsPage from '../pages/Settings'
-import ServicesPage from '../pages/Service'
+import SettingsContainer from '../containers/Settings/SettingsContainer'
+import ServicesPage from '../pages/profile'
 
 const propTypes = {
     navigator: PropTypes.object.isRequired,
     route: PropTypes.object.isRequired,
 };
 
-var CurrentPage = OpenJobsPage;
+var CurrentPage = JobsContainer;
 var pageMap = new Map();
-pageMap.set('view-list', OpenJobsPage);
+pageMap.set('view-list', JobsContainer);
 pageMap.set('today', WipPage);
-pageMap.set('settings', SettingsPage);
+pageMap.set('settings', SettingsContainer);
 pageMap.set('account-circle', ServicesPage);
 
 class BottomNavigationSpec extends Component {
@@ -63,6 +63,12 @@ class BottomNavigationSpec extends Component {
                         key="settings"
                         icon="settings"
                         label="Settings"
+                        onPress={() => this.updateView('settings')}
+                    />
+                    <BottomNavigation.Action
+                        key="settings1"
+                        icon="settings"
+                        label="Profile"
                         onPress={() => this.updateView('settings')}
                     />
                 </BottomNavigation>

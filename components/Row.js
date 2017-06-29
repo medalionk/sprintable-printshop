@@ -2,37 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image  } from 'react-native';
 import { Avatar, Card, ListItem, Toolbar } from 'react-native-material-ui';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius:10,
-  },
-  textContainer: {
-        paddingHorizontal: 16,
-        paddingBottom: 16,
-  },
-  thumbnail: {
-    height: 40,
-    width: 30,
-    borderRadius: 80,
-  },
-  picture: {
-    height: 120,
-    width: 150,
-    borderRadius: 0,
-  },
-
-  photoContainer: {
-    flexDirection: 'column',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-  },
-});
-
-var profilePicLink = "https://randomuser.me/api/portraits/men/97.jpg";
-
 class Row extends Component {
   constructor(props) {
         super(props);
@@ -45,19 +14,20 @@ class Row extends Component {
           this.props.onPress(this.props.data.job)
         }}>
         <ListItem
-          leftElement={<Avatar image={<Image source= {{ uri: profilePicLink}} style={styles.thumbnail}/>} />}
-          //leftElement={<Image source={{ uri: profilePicLink}} style={styles.thumbnail} />}
+          leftElement={<Image source= {{ 
+            uri: this.props.data.picture.thumbnail}} 
+            style={styles.thumbnail}/>}
           centerElement={{
-              primaryText: 'John Buka',
-              secondaryText: this.props.data.job}}
+              primaryText: `${this.props.data.name.first} ${this.props.data.name.last}`,
+              secondaryText: this.props.data.email}}
                 />
-          <View style={styles.photoContainer}>
+          <View>
               <Image source={{ uri: this.props.data.picture.large}} style={styles.picture} />
           </View>         
           <View style={styles.textContainer}>
             <Text>
               Losrem ipsumg dolor sit amet, consectetur adipiscing elit,
-              sed hdffo eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              sed hdffo eimod tempor incididunt ut labore et dolore magna aliqua.
             </Text>
           </View>               
       </Card>
@@ -65,5 +35,29 @@ class Row extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  textContainer: {
+        paddingHorizontal: 16,
+        paddingBottom: 16,
+  },
+  thumbnail: {
+    height: 40,
+    borderRadius: 20,
+    width: 40
+  },
+  picture: {
+    height: 200,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+});
 
 export default Row;

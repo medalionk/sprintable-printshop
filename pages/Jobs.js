@@ -1,71 +1,65 @@
-import { View, StyleSheet, Text } from 'react-native';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  ListView,
+  View
+} from 'react-native';
+import { titles } from '../strings';
+import { colors } from '../styles';
 
-import { Avatar, Card, ListItem, Toolbar } from 'react-native-material-ui';
+
+import Row from '../components/Row'
+import Footer from '../components/Footer'
+import Toolbar from '../components/ToolbarSearchable';
 import Container from '../container';
-import ToolbarBack from '../components/ToolbarBack';
+import ItemRootPage from '../pages/ItemRoot'
+import data from '../data2'
 
-const styles = StyleSheet.create({
-    textContainer: {
-        paddingHorizontal: 16,
-        paddingBottom: 16,
-    },
-});
+class OpenJobs extends Component {
+  constructor(props) {
+    super(props)
 
-const propTypes = {
-    navigator: PropTypes.object.isRequired,
-    route: PropTypes.object.isRequired,
-};
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+    });
 
-class CardSpec extends Component {
-    render() {
-        return (
-            <Container>
-                <Toolbar
-                    leftElement="arrow-back"
-                    onLeftElementPress={() => this.props.navigator.pop()}
-                    centerElement="{this.props.route.title}"
-                />
-                
-                <Card>
-                    <ListItem
-                        leftElement={<Avatar text="JM" />}
-                        centerElement={{
-                            primaryText: 'John Mitri',
-                            secondaryText: '3 weeks ago',
-                        }}
-                    />
-                    <View style={styles.textContainer}>
-                        <Text>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantjjium doloremque laudantium,
-                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-                            quasi architecto beatae vitae dicta sunt explicabo.
-                        </Text>
-                    </View>
-                </Card>
-                <Card>
-                    <ListItem
-                        leftElement={<Avatar text="MW" />}
-                        centerElement={{
-                            primaryText: 'Mike Wiliams',
-                            secondaryText: '4 weeks ago',
-                        }}
-                    />
-                    <View style={styles.textContainer}>
-                        <Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut aliquip ex ea commodo consequat.
-                        </Text>
-                    </View>
-                </Card>
-            </Container>
-        );
+    this.state = {
+      dataSource: ds.cloneWithRows(data)
     }
+  }
+
+  viewJob(id){
+        this.props.navigator.push({title: titles.details, Page: ItemRootPage, navigator:this.props.navigator})
+  }
+
+  render() {
+    return (
+      <Container>
+        <Toolbar route={{title: titles.jobs}} navigator={this.props.navigator}/>
+        <View style={styles.container}>
+                <ListView
+                  style={styles.container}
+                  dataSource={this.state.dataSource}
+                  renderRow={(d) => <Row data={d} onPress={(id) => this.viewJob(id)} />}
+                  renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+                  renderFooter={() => <Footer />}
+                  on
+                />       
+          </View>
+      </Container>
+    );
+  }
 }
 
-CardSpec.propTypes = propTypes;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  separator: {
+    flex: 1,
+    height: 5,
+    backgroundColor: colors.transparent,
+  },
+});
 
-export default CardSpec;
+export default OpenJobs;

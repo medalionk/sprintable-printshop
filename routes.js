@@ -1,6 +1,6 @@
 import Home from './app/Home.react';
-import OpenJobsPage from './pages/OpenJobs'
-import SettingsPage from './pages/Settings'
+import JobsContainer from './containers'
+import SettingsContainer from './containers'
 import ServicesPage from './pages/Service'
 
 export default {
@@ -10,7 +10,7 @@ export default {
     },
     jobs: {
         title: 'Current Jobs',
-        Page: OpenJobsPage,
+        Page: JobsContainer,
     },
     wip: {
         title: 'WIP',
@@ -18,10 +18,10 @@ export default {
     },
     settings: {
         title: 'Settings',
-        Page: SettingsPage,
+        Page: SettingsContainer,
     },
     services: {
         title: 'Services',
-        Page: ServicesPage,
+        Page: SettingsContainer,
     }
 };

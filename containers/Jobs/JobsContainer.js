@@ -4,26 +4,18 @@ import {
   ListView,
   View
 } from 'react-native';
+import { titles } from '../../strings';
+import { colors } from '../../styles';
 
-import Row from '../components/Row'
-import Footer from '../components/Footer'
-import data from '../data'
-import Toolbar from '../components/ToolbarSearchable';
-import Container from '../container';
-import ItemRootPage from '../pages/ItemRoot'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  separator: {
-    flex: 1,
-    height: 5,
-    backgroundColor: 'transparent',
-  },
-});
+import Row from '../../components/Row'
+import Footer from '../../components/Footer'
+import Toolbar from '../../components/ToolbarSearchable';
+import Container from '../../container';
+import ItemRootPage from '../../pages/ItemRoot'
+import data from '../../data2'
 
-class WIP extends Component {
+class JobsContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -37,13 +29,13 @@ class WIP extends Component {
   }
 
   viewJob(id){
-        this.props.navigator.push({title: 'Details', Page: ItemRootPage})
+        this.props.navigator.push({title: titles.details, Page: ItemRootPage, navigator:this.props.navigator})
   }
 
   render() {
     return (
       <Container>
-        <Toolbar route={{title: 'WIP'}} navigator={this.props.navigator}/>
+        <Toolbar route={{title: titles.jobs}} navigator={this.props.navigator}/>
         <View style={styles.container}>
                 <ListView
                   style={styles.container}
@@ -59,4 +51,15 @@ class WIP extends Component {
   }
 }
 
-export default WIP;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  separator: {
+    flex: 1,
+    height: 5,
+    backgroundColor: colors.transparent,
+  },
+});
+
+export default JobsContainer;

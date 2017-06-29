@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image  } from 'react-native';
 import { Avatar, Card, ListItem, Toolbar, Button } from 'react-native-material-ui';
+import ProfilePage from '../pages/profile'
 
 const styles = StyleSheet.create({
   container: {
@@ -46,14 +47,21 @@ class Details extends Component {
         super(props);
     }
 
+  viewClient(){
+      this.props.navigator.push({title: 'Profile', Page: ProfilePage})
+  }
+
   render() {
     return (
      <View style={styles.container}>
       <Card onPress={() => {
-          //this.props.onPress(this.props.data.job)
+           this.viewClient()
         }}>
         <ListItem
-          leftElement={<Avatar image={<Image source= {{ uri: profilePicLink}} style={styles.thumbnail}/>} />}
+          leftElement={<Avatar image={<Image 
+            onPress={() => this.viewClient()} 
+            source= {{ uri: profilePicLink}} 
+            style={styles.thumbnail}/>} />}
           centerElement={{
               primaryText: 'John Buka',
               secondaryText: 'Job 2'}}
