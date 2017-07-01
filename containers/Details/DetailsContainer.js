@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 var imageLink = "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg";
 var profilePicLink = "https://randomuser.me/api/portraits/men/97.jpg";
 
-class Details extends Component {
+class DetailsContainer extends Component {
   constructor(props) {
         super(props);
     }
@@ -89,4 +89,4 @@ class Details extends Component {
   }
 }
 
-export default Details;
+export default DetailsContainer;

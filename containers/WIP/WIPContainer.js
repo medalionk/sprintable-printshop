@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class WIP extends Component {
+class WIPContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -59,4 +59,4 @@ class WIP extends Component {
   }
 }
 
-export default WIP;
+export default WIPContainer;

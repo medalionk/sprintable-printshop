@@ -18,9 +18,9 @@ var pageMap = new Map();
 pageMap.set('view-list', JobsContainer);
 pageMap.set('today', WipPage);
 pageMap.set('settings', SettingsContainer);
-pageMap.set('account-circle', ServicesPage);
+pageMap.set('mood', ServicesPage);
 
-class BottomNavigationSpec extends Component {
+class BottomNavigationComponent extends Component {
     constructor(props) {
         super(props);
 
@@ -54,22 +54,16 @@ class BottomNavigationSpec extends Component {
                         onPress={() => this.updateView('today')}
                     />
                     <BottomNavigation.Action
-                        key="account-circle"
-                        icon="account-circle"
-                        label="Services"
-                        onPress={() => this.updateView('account-circle')}
-                    />
-                    <BottomNavigation.Action
                         key="settings"
                         icon="settings"
                         label="Settings"
                         onPress={() => this.updateView('settings')}
                     />
                     <BottomNavigation.Action
-                        key="settings1"
-                        icon="settings"
-                        label="Profile"
-                        onPress={() => this.updateView('settings')}
+                        key="mood"
+                        icon="mood"
+                        label="Lorems"
+                        onPress={() => this.updateView('mood')}
                     />
                 </BottomNavigation>
             </Container>
@@ -77,6 +71,6 @@ class BottomNavigationSpec extends Component {
     }
 }
 
-BottomNavigationSpec.propTypes = propTypes;
+BottomNavigationComponent.propTypes = propTypes;
 
-export default BottomNavigationSpec;
+export default BottomNavigationComponent;

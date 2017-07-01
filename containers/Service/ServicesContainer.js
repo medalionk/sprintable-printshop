@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text } from 'react-native';
 
-class Service extends Component {
+class ServiceContainer extends Component {
   render() {
     return (
       <Text>Services!</Text>
@@ -9,4 +9,4 @@ class Service extends Component {
   }
 }
 
-export default Service;
+export default ServiceContainer;

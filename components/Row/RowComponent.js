@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image  } from 'react-native';
 import { Avatar, Card, ListItem, Toolbar } from 'react-native-material-ui';
 
-class Row extends Component {
+class RowComponent extends Component {
   constructor(props) {
         super(props);
     }
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Row;
+export default RowComponent;

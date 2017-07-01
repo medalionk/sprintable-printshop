@@ -6,7 +6,7 @@ const propTypes = {
     title: PropTypes.string.isRequired,
 };
 
-class ToolbarSpec extends Component {
+class ToolbarSpecComponent extends Component {
     render() {
         return (
             <View>
@@ -18,6 +18,6 @@ class ToolbarSpec extends Component {
     }
 }
 
-ToolbarSpec.propTypes = propTypes;
+ToolbarSpecComponent.propTypes = propTypes;
 
-export default ToolbarSpec;
+export default ToolbarSpecComponent;

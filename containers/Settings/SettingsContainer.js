@@ -32,6 +32,10 @@ class SettingsContainer extends Component {
         this.props.navigator.push({title: strings.profile, Page: ProfileContainer, navigator:this.props.navigator})
   }
 
+  onServicePush(){
+        this.props.navigator.push({title: strings.profile, Page: ProfileContainer, navigator:this.props.navigator})
+  }
+
   render() {
     return (
       <Container>
@@ -46,22 +50,20 @@ class SettingsContainer extends Component {
               borderHide={'Both'}
             />
             <SettingsList.Item
-              icon={<Icon size={ItemIconSize} name="home" style={styles.iconStyle}/>}
-              hasNavArrow={false}
-              itemWidth={ItemWidth}
-              titleStyle={styles.itemTitleStyle}
-              title='Lorem Ipsum'
-              switchState={this.state.switchValue}
-              switchOnValueChange={this.onValueChange}
-              hasSwitch={true}
-            />
-            <SettingsList.Item
-              icon={<Icon size={ItemIconSize} name="storage" style={styles.iconStyle}/>}
+              icon={<Icon size={ItemIconSize} name="account-circle" style={styles.iconStyle}/>}
               title='Profile'
               itemWidth={ItemWidth}
               titleStyle={styles.itemTitleStyle}
               hasNavArrow={false}
               onPress={() => { this.onProfilePush()}}
+            />
+            <SettingsList.Item
+              icon={<Icon size={ItemIconSize} name="view-list" style={styles.iconStyle}/>}
+              hasNavArrow={false}
+              itemWidth={ItemWidth}
+              titleStyle={styles.itemTitleStyle}
+              title='Services'
+              onPress={() => { this.onServicePush()}}
             />
             <SettingsList.Header headerStyle={{marginTop:-5}}/>
             <SettingsList.Item
@@ -84,6 +86,9 @@ class SettingsContainer extends Component {
               itemWidth={ItemWidth}
               titleStyle={styles.itemTitleStyle}
               hasNavArrow={false}
+              switchState={this.state.switchValue}
+              switchOnValueChange={this.onValueChange}
+              hasSwitch={true}
             />
             <SettingsList.Item
               icon={<Icon size={ItemIconSize} name="extension" style={styles.iconStyle}/>}

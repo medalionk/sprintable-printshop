@@ -6,7 +6,7 @@ const propTypes = {
     route: PropTypes.object.isRequired,
 };
 
-class ToolbarBack extends Component {
+class ToolbarBackComponent extends Component {
     render() {
         return (
             <Toolbar
@@ -18,6 +18,6 @@ class ToolbarBack extends Component {
     }
 }
 
-ToolbarBack.propTypes = propTypes;
+ToolbarBackComponent.propTypes = propTypes;
 
-export default ToolbarBack;
+export default ToolbarBackComponent;

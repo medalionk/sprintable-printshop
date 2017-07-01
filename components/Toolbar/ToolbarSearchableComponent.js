@@ -6,7 +6,7 @@ const propTypes = {
     route: PropTypes.object.isRequired,
 };
 
-class ToolbarSearchable extends Component {
+class ToolbarSearchableComponent extends Component {
     constructor(props) {
         super(props);
 
@@ -57,6 +57,6 @@ class ToolbarSearchable extends Component {
     }
 }
 
-ToolbarSearchable.propTypes = propTypes;
+ToolbarSearchableComponent.propTypes = propTypes;
 
-export default ToolbarSearchable;
+export default ToolbarSearchableComponent;

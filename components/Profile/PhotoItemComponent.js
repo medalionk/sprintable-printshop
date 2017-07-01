@@ -10,7 +10,7 @@ import { colors } from '../../styles';
 
 const { width } = Dimensions.get('window');
 
-const PhotoItem = (props) => {
+const PhotoItemComponent = (props) => {
   return (
     <View>
       <Image source={{uri: props.photoUrl}} style={styles.image} />
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
   }
 })
 
-PhotoItem.propTypes = {
+PhotoItemComponent.propTypes = {
   photoUrl: PropTypes.string.isRequired,
 };
 
-export default PhotoItem;
+export default PhotoItemComponent;

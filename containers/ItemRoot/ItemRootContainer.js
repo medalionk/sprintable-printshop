@@ -3,15 +3,18 @@ import { View, StyleSheet } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-const FirstRoute = () => <View style={[ styles.container, { backgroundColor: '#ff4081' } ]} />;
+import Toolbar from '../components/ToolbarBack';
+import Container from '../container';
+import DetailsPage from '../pages/Details'
+
 const SecondRoute = () => <View style={[ styles.container, { backgroundColor: '#673ab7' } ]} />;
 
-export default class TabView extends PureComponent {
+class ItemRootContainer extends PureComponent {
   state = {
     index: 0,
     routes: [
-      { key: '1', title: 'First', icon: 'home'  },
-      { key: '2', title: 'Second', icon: 'settings' },
+      { key: '1', title: 'Job Details', icon: 'home'  },
+      { key: '2', title: 'Message Client', icon: 'settings' },
     ],
   };
 
@@ -33,19 +36,23 @@ export default class TabView extends PureComponent {
     };
 
     _renderScene = SceneMap({
-        '1': FirstRoute,
+        '1': DetailsPage,
         '2': SecondRoute,
     });
 
   render() {
     return (
-      <TabViewAnimated
-        style={[styles.container, this.props.style]}
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        renderHeader={this._renderHeader}
-        onRequestChangeTab={this._handleChangeTab}
-      />
+      <Container>
+        <Toolbar route={{title: 'Details'}} navigator={this.props.navigator}/>
+        <TabViewAnimated
+          style={[styles.container, this.props.style]}
+          navigationState={this.state}
+          renderScene={this._renderScene}
+          renderHeader={this._renderHeader}
+          onRequestChangeTab={this._handleChangeTab}
+        />
+      </Container>
+      
     );
   }
 }
@@ -55,9 +62,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tabbar: {
-    backgroundColor: '#222',
+    backgroundColor: '#228B22',
   },
   indicator: {
     backgroundColor: '#ffeb3b',
   },
 });
+
+export default ItemRootContainer;

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Footer = (props) => (
+const FooterComponent = (props) => (
   <View style={styles.container}>
     <TouchableOpacity style={styles.button} onPress={() => console.log('load more')}>
       <Text style={styles.text}>Load More</Text>
@@ -28,4 +28,4 @@ const Footer = (props) => (
   </View>
 );
 
-export default Footer;
+export default FooterComponent;
