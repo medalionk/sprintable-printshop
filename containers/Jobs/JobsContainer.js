@@ -8,12 +8,12 @@ import { strings } from '../../strings';
 import { colors } from '../../styles';
 
 
-import Row from '../../components/Row'
-import Footer from '../../components/Footer'
-import Toolbar from '../../components/ToolbarSearchable';
-import Container from '../../container';
-import ItemRootPage from '../../pages/ItemRoot'
-import data from '../../data2'
+import Row from '../../components/Row/RowComponent'
+import Footer from '../../components/Footer/FooterComponent'
+import Toolbar from '../../components/Toolbar/ToolbarSearchableComponent';
+import Container from '../../containers';
+import ItemRootPage from '../ItemRoot/ItemRootContainer'
+import data from '../../api/mock'
 
 class JobsContainer extends Component {
   constructor(props) {

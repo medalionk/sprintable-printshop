@@ -3,9 +3,10 @@ import { View, StyleSheet } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import Toolbar from '../components/ToolbarBack';
-import Container from '../container';
-import DetailsPage from '../pages/Details'
+import { strings } from '../../strings';
+import Toolbar from '../../components/Toolbar/ToolbarBackComponent';
+import Container from '../../containers';
+import DetailsPage from '../../containers/Details/DetailsContainer'
 
 const SecondRoute = () => <View style={[ styles.container, { backgroundColor: '#673ab7' } ]} />;
 
@@ -13,8 +14,8 @@ class ItemRootContainer extends PureComponent {
   state = {
     index: 0,
     routes: [
-      { key: '1', title: 'Job Details', icon: 'home'  },
-      { key: '2', title: 'Message Client', icon: 'settings' },
+      { key: '1', title: 'Job Details', icon: 'details'  },
+      { key: '2', title: 'Message Client', icon: 'message' },
     ],
   };
 
@@ -43,7 +44,7 @@ class ItemRootContainer extends PureComponent {
   render() {
     return (
       <Container>
-        <Toolbar route={{title: 'Details'}} navigator={this.props.navigator}/>
+        <Toolbar route={{title: strings.details}} navigator={this.props.navigator}/>
         <TabViewAnimated
           style={[styles.container, this.props.style]}
           navigationState={this.state}

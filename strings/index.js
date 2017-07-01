@@ -4,4 +4,6 @@ export const strings = {
   profile: 'Profile',
   editProfile: 'Edit Profile',
   save: 'Save',
+  message: 'Send Message',
+  wip: 'WIP',
 };

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, Dimensions, ScrollView, View, TouchableHighlight } from 'react-native';
 import { Button } from 'react-native-elements'
 
-import Container from '../../container';
-import Toolbar from '../../components/ToolbarBack';
+import Container from '../../containers';
+import Toolbar from '../../components/Toolbar/ToolbarBackComponent';
 import { strings } from '../../strings';
 
 var t = require('tcomb-form-native');
@@ -11,18 +11,12 @@ var t = require('tcomb-form-native');
 const { height } = Dimensions.get('window');
 var Form = t.form.Form;
 
-var Gender = t.enums({
-  M: 'Male',
-  F: 'Female'
-});
-
 var Person = t.struct({
   name: t.String, 
   address: t.String,             
   phoneNumber: t.Number,
   email: t.String,  
-  socialMedia: t.maybe(t.String), 
-  gender: Gender,            
+  socialMedia: t.maybe(t.String),           
   showPhoneNumber: t.Boolean
 });
 
@@ -60,7 +54,6 @@ class EditProfileContainer extends Component {
                 
             </View>
           </ScrollView>
-          
       </Container>
     );
   }

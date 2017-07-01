@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
 import Routes from '../routes';
-import Container from '../container';
-import BottomNavigation from '../components/BottomNavigation';
-import ToolbarSpec from '../components/ToolbarSearchable';
+import Container from '../containers';
+import BottomNavigation from '../components/Navigation/BottomNavigationComponent';
+import ToolbarSpec from '../components/Toolbar/ToolbarSearchableComponent';
 
 const propTypes = {
     navigator: PropTypes.object.isRequired,

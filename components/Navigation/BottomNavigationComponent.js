@@ -1,24 +1,25 @@
 import React, { Component, PropTypes } from 'react';
 import { BottomNavigation, Icon } from 'react-native-material-ui';
+import { Text, View } from 'react-native';
 
-import Container from '../container';
-
-import JobsContainer from '../containers/Jobs/JobsContainer'
-import WipPage from '../pages/WIP'
-import SettingsContainer from '../containers/Settings/SettingsContainer'
-import ServicesPage from '../pages/profile'
+import Container from '../../containers';
+import JobsContainer from '../../containers/Jobs/JobsContainer'
+import WipPage from '../../containers/WIP/WIPContainer'
+import SettingsContainer from '../../containers/Settings/SettingsContainer'
 
 const propTypes = {
     navigator: PropTypes.object.isRequired,
     route: PropTypes.object.isRequired,
 };
 
+const TodoPage = () => <View style={{ backgroundColor: '#673ab7', flex:1 }} />;
+
 var CurrentPage = JobsContainer;
 var pageMap = new Map();
 pageMap.set('view-list', JobsContainer);
 pageMap.set('today', WipPage);
 pageMap.set('settings', SettingsContainer);
-pageMap.set('mood', ServicesPage);
+pageMap.set('mood', TodoPage);
 
 class BottomNavigationComponent extends Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image  } from 'react-native';
-import { Avatar, Card, ListItem, Toolbar } from 'react-native-material-ui';
+import { Card, ListItem} from 'react-native-material-ui';
 
 class RowComponent extends Component {
   constructor(props) {

@@ -1,6 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
+const FooterComponent = (props) => (
+  <View style={styles.container}>
+    <TouchableOpacity style={styles.button} onPress={() => console.log('load more')}>
+      <Text style={styles.text}>Load More</Text>
+    </TouchableOpacity>
+  </View>
+);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -19,13 +27,5 @@ const styles = StyleSheet.create({
     color: '#8E8E8E',
   },
 });
-
-const FooterComponent = (props) => (
-  <View style={styles.container}>
-    <TouchableOpacity style={styles.button} onPress={() => console.log('load more')}>
-      <Text style={styles.text}>Load More</Text>
-    </TouchableOpacity>
-  </View>
-);
 
 export default FooterComponent;

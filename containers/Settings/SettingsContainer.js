@@ -9,8 +9,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import { strings } from '../../strings';
 import { colors } from '../../styles';
-import Toolbar from '../../components/Toolbar';
-import Container from '../../container';
+import Toolbar from '../../components/Toolbar/ToolbarComponent';
+import Container from '../../containers';
 import ProfileContainer from '../Profile/ProfileContainer'
 
 const ItemIconSize = 30;

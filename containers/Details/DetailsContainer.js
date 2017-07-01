@@ -1,43 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image  } from 'react-native';
 import { Avatar, Card, ListItem, Toolbar, Button } from 'react-native-material-ui';
-import ProfilePage from '../pages/profile'
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  textContainer: {
-        paddingHorizontal: 16,
-        paddingBottom: 16,
-  },
-  thumbnail: {
-    height: 40,
-    width: 30,
-    borderRadius: 80,
-  },
-  picture: {
-    height: 120,
-    width: 150,
-    borderRadius: 0,
-  },
-
-  photoContainer: {
-    flexDirection: 'column',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-  },
-  rowContainer: {
-        margin: 8,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 150,
-        
-    },
-    button: {
-        marginHorizontal: 30,
-    },
-});
+import ProfilePage from '../Profile/ClientProfileContainer'
 
 var imageLink = "http://images.esellerpro.com/3522/I/204/5/1467388480-39965700.jpg";
 var profilePicLink = "https://randomuser.me/api/portraits/men/97.jpg";
@@ -88,5 +52,41 @@ class DetailsContainer extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  textContainer: {
+        paddingHorizontal: 16,
+        paddingBottom: 16,
+  },
+  thumbnail: {
+    height: 40,
+    width: 30,
+    borderRadius: 80,
+  },
+  picture: {
+    height: 120,
+    width: 150,
+    borderRadius: 0,
+  },
+
+  photoContainer: {
+    flexDirection: 'column',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+  },
+  rowContainer: {
+        margin: 8,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 150,
+        
+    },
+    button: {
+        marginHorizontal: 30,
+    },
+});
 
 export default DetailsContainer;

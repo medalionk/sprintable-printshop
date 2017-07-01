@@ -4,7 +4,7 @@ import { Navigator } from 'react-native-deprecated-custom-components';
 
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
 import routes from '../routes';
-import Container from '../container';
+import Container from '../containers';
 
 const UIManager = NativeModules.UIManager;
 

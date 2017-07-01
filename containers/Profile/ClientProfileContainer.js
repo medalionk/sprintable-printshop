@@ -3,19 +3,12 @@ import { AppRegistry, Text, StyleSheet, Dimensions, ScrollView } from 'react-nat
 import { Card, ListItem, Button, Rating } from 'react-native-elements'
 
 import Container from '../../containers';
-import EditProfileContainer from '../Profile/EditProfileContainer'
 import Toolbar from '../../components/Toolbar/ToolbarBackComponent';
 import { strings } from '../../strings';
 
 const { height } = Dimensions.get('window');
 
-class ProfileContainer extends Component {
-  onEditPush(){
-        this.props.navigator.push({
-          title: strings.editProfile, 
-          Page: EditProfileContainer, 
-          navigator:this.props.navigator})
-  }
+class ClentProfileContainer extends Component {
   
   render() {
     return (
@@ -43,11 +36,10 @@ class ProfileContainer extends Component {
                 style={{ paddingVertical: 10 }}
               />
               <Button
-                icon={{name: 'edit'}}
+                icon={{name: 'message'}}
                 backgroundColor='#03A9F4'               
                 buttonStyle={styles.button}
-                title={strings.editProfile} 
-                onPress={() => { this.onEditPush()}}/>
+                title={strings.message} />
             </Card>
           </ScrollView>
       </Container>
@@ -76,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileContainer;
+export default ClentProfileContainer;

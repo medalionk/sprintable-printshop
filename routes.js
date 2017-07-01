@@ -1,7 +1,7 @@
 import Home from './app/Home.react';
-import JobsContainer from './containers'
-import SettingsContainer from './containers'
-import ServicesPage from './pages/Service'
+import JobsContainer from './containers/Jobs/JobsContainer'
+import SettingsContainer from './containers/Settings/SettingsContainer'
+import ServicesPage from './containers/Service/ServicesContainer'
 
 export default {
     home: {
