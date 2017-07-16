@@ -1,13 +1,18 @@
 import { AppRegistry } from 'react-native';
-import React, { Component } from 'react';
-import App from './app/App.react';
+import React, {Component} from 'react';
+import { Provider } from 'react-redux';
 
-export default class Home extends Component {
+import AppViewContainer from './app/AppContainer';
+import store from './store';
+
+export default class App extends Component {
   render() {
     return (
-       <App />
+      <Provider store={store}>
+        <AppViewContainer />
+      </Provider>
     );
   }
 }
 
-AppRegistry.registerComponent('Home', () => Home);
+AppRegistry.registerComponent('App', () => App);

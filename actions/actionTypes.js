@@ -1,0 +1,10 @@
+// Auth
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const AUTH_REQUEST_START = 'AUTH_REQUEST_START';
+export const AUTH_REQUEST_SUCCESS = 'AUTH_REQUEST_SUCCESS';
+export const AUTH_REQUEST_FAILURE = 'AUTH_REQUEST_FAILURE';
+
+// Session
+export const INITIALIZE_SESSION = 'INITIALIZE_SESSION';
+export const RESET_SESSSION = 'RESET_SESSION';
