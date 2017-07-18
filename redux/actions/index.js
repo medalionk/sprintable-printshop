@@ -5,6 +5,7 @@ import {
   logout
 } from './actionCreators/authentication';
 import { fetchJobs } from './actionCreators/fetchJobs';
+import { fetchWIP } from './actionCreators/fetchWIP';
 
 export {
   initializeSession,
@@ -12,4 +13,5 @@ export {
   login,
   logout,
   fetchJobs,
+  fetchWIP,
 };
