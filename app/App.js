@@ -16,9 +16,11 @@ const uiTheme = {
 };
 
 class App extends Component {
+    
     static configureScene(route) {
         return route.animationType || Navigator.SceneConfigs.FloatFromRight;
     }
+
     static renderScene(route, navigator) {
         return (
             <Container>
@@ -37,6 +39,7 @@ class App extends Component {
         }
     }
     render() {
+        const { jobs, loading } = this.props;
         return (
             <ThemeProvider uiTheme={uiTheme}>
                 <Navigator

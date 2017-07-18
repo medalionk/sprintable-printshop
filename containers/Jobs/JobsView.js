@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   ListView,
-  View
+  View,
+  Text,
+  ActivityIndicator,
 } from 'react-native';
+
 import { strings } from '../../strings';
 import { colors } from '../../styles';
 
@@ -11,40 +14,55 @@ import Toolbar from '../../components/Toolbar/ToolbarSearchableComponent';
 import Row from '../../components/Row/JobRowComponent'
 import Footer from '../../components/Footer/FooterComponent'
 import Container from '../../containers';
-import ItemRootPage from '../Tab/TabViewContainer'
-import data from '../../api/mock'
+import TabView from '../Tab/TabViewContainer'
+
+const ds1 = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+});
 
 class JobsView extends Component {
   constructor(props) {
     super(props)
-
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-    });
-
-    this.state = {
-      dataSource: ds.cloneWithRows(data)
-    }
   }
 
+  componentDidMount() {
+        this.props.fetchJobs();
+    }
+
   viewJob(id){
-        this.props.navigator.push({title: strings.details, Page: ItemRootPage, navigator:this.props.navigator})
+        this.props.navigator.push({title: strings.details, Page: TabView, navigator:this.props.navigator})
   }
 
   render() {
     return (
       <Container>
       <Toolbar route={{title: strings.jobs}} navigator={this.props.navigator}/>
-        <View style={styles.container}>
+        {
+          this.props.isFetching && 
+          <ActivityIndicator
+            animating={true}
+            style={[styles.centering, {height: 80}]}
+            size="large"
+          />
+        }
+        {
+          this.props.error && <Text>Error</Text>
+        }
+        {
+          this.props.data.results ? (
+            <View style={styles.container}>
                 <ListView
                   style={styles.container}
-                  dataSource={this.state.dataSource}
+                  dataSource={ds1.cloneWithRows(this.props.data.results)}
                   renderRow={(d) => <Row data={d} onPress={(id) => this.viewJob(id)} />}
                   renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                   renderFooter={() => <Footer />}
                   on
                 />       
           </View>
+          )
+          :null
+        }
       </Container>
     );
   }
@@ -58,6 +76,11 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 5,
     backgroundColor: colors.transparent,
+  },
+  centering: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
   },
 });
 

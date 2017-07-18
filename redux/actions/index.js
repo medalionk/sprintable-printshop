@@ -4,11 +4,12 @@ import {
   login,
   logout
 } from './actionCreators/authentication';
-// import { fetchNotifications } from './actionCreators/fetchNotifications';
+import { fetchJobs } from './actionCreators/fetchJobs';
 
 export {
   initializeSession,
   resetSession,
   login,
-  logout
+  logout,
+  fetchJobs,
 };
