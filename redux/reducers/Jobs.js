@@ -37,3 +37,4 @@ const JobsReducer = (state = initialState, action) => {
 };
 
 export default JobsReducer;
+

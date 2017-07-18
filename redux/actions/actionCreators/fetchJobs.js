@@ -7,22 +7,21 @@ import {
 import { API_URL } from '../../../config/constants';
 
 export const fetchJobs = () => (dispatch, getState) => {
+  console.log('fetch jobs start');
   dispatch({type: FETCH_JOBS_START});
-  
-  //const url = `${API_URL}/posts`
   
   return axios({
     method: 'get',
     url: `${API_URL}`,
   })
   .then(({data}) => {
-    //console.log('successfully fetched posts', data);
+    console.log('fetch jobs success: ', data);
     dispatch({
       type: FETCH_JOBS_SUCCESS,
       data
     });
   }, (error) => {
-    //console.log('error', error);
+    console.log('fetch jobs failure: ', error);
     dispatch({
       type: FETCH_JOBS_FAILURE,
       error
