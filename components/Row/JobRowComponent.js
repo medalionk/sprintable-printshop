@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image  } from 'react-native';
-import { Card, ListItem} from 'react-native-material-ui';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity  } from 'react-native';
+import { Card, ListItem, Grid, Col, Row } from 'react-native-elements'
+
+var {height, width} = Dimensions.get('window');
 
 class RowComponent extends Component {
   constructor(props) {
@@ -9,29 +11,41 @@ class RowComponent extends Component {
 
   render() {
     return (
-     <View style={styles.container}>
-      <Card onPress={() => {
-          this.props.onPress(this.props.data.job)
-        }}>
-        <ListItem
-          leftElement={<Image source= {{ 
-            uri: this.props.data.picture.thumbnail}} 
-            style={styles.thumbnail}/>}
-          centerElement={{
-              primaryText: `${this.props.data.name.first} ${this.props.data.name.last}`,
-              secondaryText: this.props.data.email}}
-                />
-          <View>
-              <Image source={{ uri: this.props.data.picture.large}} style={styles.picture} />
-          </View>         
-          <View style={styles.textContainer}>
-            <Text>
-              Losrem ipsumg dolor sit amet, consectetur adipiscing elit,
-              sed hdffo eimod tempor incididunt ut labore et dolore magna aliqua.
-            </Text>
-          </View>               
-      </Card>
-    </View>
+      <TouchableOpacity  onPress={() => { this.props.onPress(this.props.data.id) }}>
+        <View style={styles.container}>
+          <Card 
+            title={this.props.data.title}>
+            <Grid 
+              containerStyle={styles.grid}>
+              <Col size={0.25}>
+                <TouchableOpacity onPress={() => console.log('customer image pressed')}>
+                  <Image
+                    source={{ uri: this.props.data.customer.thumbnail}}
+                    style={styles.thumbnail}
+                  />
+                </TouchableOpacity>
+              </Col>
+              <Col>
+                <Row size={0.75}>
+                  <Text style={styles.nameText}>{this.props.data.customer.name}</Text>
+                </Row>
+                <Row>
+                  <Text style={styles.priceText}>{this.props.data.price}</Text>
+                </Row>
+                <Row>
+                  <Text style={styles.quantityText}>{this.props.data.quantity}</Text>
+                </Row>
+                <Row>
+                  <Text style={styles.descriptionText}>{this.props.data.description}</Text>
+                </Row>
+              </Col>
+            </Grid>
+            <View>
+              <Image source={{ uri: this.props.data.image}} style={styles.picture} />
+            </View>
+          </Card>  
+        </View>
+      </TouchableOpacity >
     );
   }
 }
@@ -39,24 +53,39 @@ class RowComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 10,
   },
   textContainer: {
         paddingHorizontal: 16,
         paddingBottom: 16,
   },
   thumbnail: {
-    height: 40,
-    borderRadius: 20,
-    width: 40
+    height: 50, 
+    width: 50, 
+    borderRadius: 25,
   },
   picture: {
-    height: 200,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
+    height: height * .3,
     alignItems: 'center',
+  },
+  grid: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    padding: 5,
+  },
+  nameText: {
+   fontSize: 22
+  },
+  quantityText: {
+    fontWeight: 'bold',
+  },
+  priceText: {
+    color: 'green',
+    fontStyle: 'italic'
+  },
+  descriptionText: {
+    color: 'grey'
   },
 });
 

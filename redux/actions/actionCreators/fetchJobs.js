@@ -12,7 +12,7 @@ export const fetchJobs = () => (dispatch, getState) => {
   
   return axios({
     method: 'get',
-    url: `${API_URL}`,
+    url: `${API_URL}/jobs`,
   })
   .then(({data}) => {
     console.log('fetch jobs success: ', data);

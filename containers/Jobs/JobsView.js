@@ -53,14 +53,15 @@ class JobsView extends Component {
           this.props.error && <Text>Error!!!</Text>
         }
         {
-          this.props.data.results ? (
+          this.props.data ? (
             <View style={styles.container}>
                 <ListView
                   style={styles.container}
-                  dataSource={ds.cloneWithRows(this.props.data.results)}
+                  dataSource={ds.cloneWithRows(this.props.data)}
                   renderRow={(d) => <Row data={d} onPress={(id) => this.viewJob(id)} />}
                   renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                   renderFooter={() => <Footer />}
+                  enableEmptySections={true}
                   on
                 />       
           </View>
