@@ -40,7 +40,7 @@ class TabView extends PureComponent {
     };
 
     _renderScene = SceneMap({
-        '1': () => <JobDetailsView navigator={this.props.navigator} jobId={this.props.jobId}/>,
+        '1': () => <JobDetailsView navigator={this.props.navigator} id={this.props.id}/>,
         '2': SecondRoute,
     });
 

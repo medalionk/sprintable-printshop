@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { View, StyleSheet  } from 'react-native';
-import { Card, Button } from 'react-native-material-ui';
+import {View, StyleSheet, ScrollView  } from 'react-native';
+import { Card } from 'react-native-elements'
+
+import {  Button } from 'react-native-material-ui';
 import { strings } from '../../strings';
-import ProfilePage from '../Profile/ClientViewContainer'
 import Toolbar from '../../components/Toolbar/ToolbarBackComponent';
 import JobComponent from '../../components/Job/JobComponent';
 import Container from '../../containers';
@@ -12,26 +13,23 @@ class JobView extends Component {
         super(props);
     }
 
-  viewClient(){
-      this.props.navigator.push({title: 'Profile', Page: ProfilePage})
-  }
-
   render() {
     return (
       <Container>
-        <Toolbar route={{title: strings.progress}} navigator={this.props.navigator}/>
-        <View style={styles.container}>
-          <Card onPress={() => {
-              this.viewClient()
-            }}>
-            <JobComponent job={{name:'Kura Mutum'}}/>
-            <View style={styles.rowContainer}>
-                <View style={styles.button}>
+          <Toolbar route={{title: strings.progress}} navigator={this.props.navigator}/>
+          <ScrollView>
+            <Card 
+                containerStyle={styles.card}
+                titleStyle={styles.titleText}
+                title="this.props.data.title">
+                <JobComponent  id={this.props.id} navigator={this.props.navigator}/>
+                <View style={styles.rowContainer}>
+                  <View style={styles.button}>
                     <Button raised primary text="Completed" icon="done" />
                   </View>
-            </View>       
-          </Card>
-        </View>
+                </View>
+            </Card>  
+          </ScrollView>
       </Container>
      
     );
@@ -39,18 +37,25 @@ class JobView extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   rowContainer: {
         margin: 8,
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: 150,
-    },
-    button: {
+        marginTop: 20,
+  },
+  button: {
         marginHorizontal: 30,
-    },
+  },
+  card: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  titleText: {
+    //marginTop: 15, 
+    //marginBottom: 15
+  },
+  
 });
 
 export default JobView;

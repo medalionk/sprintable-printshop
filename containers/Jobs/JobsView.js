@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
-  ActivityIndicator,
-  Dimensions
 } from 'react-native';
 
 import { strings } from '../../strings';
 import JobsListComponent from '../../components/Job/JobsListComponent';
+import LoadingIndicator from '../../components/Misc/LoadingIndicator';
+import ErrorIndicator from '../../components/Misc/ErrorIndicator';
 import Toolbar from '../../components/Toolbar/ToolbarSearchableComponent';
 import Container from '../../containers';
 import TabView from '../Tab/TabViewContainer'
-
-const height = Dimensions.get('window').height;
 
 class JobsView extends Component {
   constructor(props) {
@@ -23,10 +20,10 @@ class JobsView extends Component {
         this.props.fetchJobs();
   }
 
-  viewJob(id){
+  viewJobDetails(id){
         this.props.navigator.push({ 
           Page: TabView, 
-          props: { jobId:id }
+          props: { id:id }
         })
   }
 
@@ -35,22 +32,16 @@ class JobsView extends Component {
       <Container>
       <Toolbar route={{title: strings.jobs}} navigator={this.props.navigator}/>
         {
-          this.props.isFetching && 
-          <ActivityIndicator
-            animating={true}
-            style = {styles.activityIndicator}
-            size="large"
-            color="#00aa00"
-          />
+          this.props.isFetching && <LoadingIndicator/>
         }
         {
-          this.props.error && <Text>Error!!!</Text>
+          this.props.error && <ErrorIndicator/>
         }
         {
           this.props.data ? (
             <JobsListComponent 
               data={this.props.data}
-              onPressHandler={this.viewJob.bind(this)}
+              onPressHandler={this.viewJobDetails.bind(this)}
               navigator={this.props.navigator}/>
           )
           :null
@@ -63,13 +54,7 @@ class JobsView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  activityIndicator: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: height * 0.8,
-   },
+  }
 });
 
 export default JobsView;

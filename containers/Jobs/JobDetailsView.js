@@ -1,93 +1,62 @@
 import React, { Component, PropTypes } from 'react';
-import { View, StyleSheet, Text, Image  } from 'react-native';
-import { Card, Button, Avatar, ListItem } from 'react-native-material-ui';
-import ProfilePage from '../Profile/ClientViewContainer'
-import JobComponent from '../../components/Job/JobComponent';
+import {View, StyleSheet, ScrollView  } from 'react-native';
+import { Card } from 'react-native-elements'
+
+import {  Button } from 'react-native-material-ui';
 import { strings } from '../../strings';
+import Toolbar from '../../components/Toolbar/ToolbarBackComponent';
+import JobComponent from '../../components/Job/JobComponent';
+import Container from '../../containers';
+
 
 class JobDetailsView extends Component {
   constructor(props) {
         super(props);
     }
 
-  viewClient(){
-      this.props.navigator.push({title: 'Profile', Page: ProfilePage})
-  }
-
   render() {
     return (
         <View style={styles.container}>
-          <Card onPress={() => {
-              this.viewClient()
-            }}>
-           <View>
-            <ListItem
-                    leftElement={<Avatar image={<Image 
-                        onPress={() => this.viewClient()} 
-                        source= {{ uri: strings.profilePicLink}} 
-                        style={styles.thumbnail}/>} />}
-                    centerElement={{
-                        primaryText: 'Kura Mutum',
-                        secondaryText: 'Job 2'}}
-                            />
-                    <View style={styles.photoContainer}>
-                        <Image source={{ uri: strings.imageLink}} style={styles.picture} />
-                    </View>         
-                    <View style={styles.textContainer}>
-                        <Text>
-                        Losrem ipsumgdolgr ddsit ametfff, consectetur adipiscing elit,
-                        sed hdffo eissmod tempor incididunt ut labore et dolore magna aliqua.
-                        </Text>
+            <ScrollView>
+                <Card 
+                    containerStyle={styles.card}
+                    titleStyle={styles.titleText}
+                    title="this.props.data.title">
+                    <JobComponent  id={this.props.id} navigator={this.props.navigator}/>
+                    <View style={styles.rowContainer}>
+                        <View style={styles.button}>
+                            <Button raised primary text="Accept" icon="done" />
+                        </View>
+                        <View style={styles.button}>
+                            <Button raised accent text="Reject" icon="clear" />
+                        </View>
                     </View>
-            </View>
-            <View style={styles.rowContainer}>
-                    <View style={styles.button}>
-                        <Button raised primary text="Accept" icon="done" />
-                    </View>
-                    <View style={styles.button}>
-                        <Button raised accent text="Reject" icon="clear" />
-                    </View>
-            </View>       
-          </Card>
+                </Card>  
+            </ScrollView>
         </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     rowContainer: {
         margin: 8,
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: 150,
-        
-    },
-    button: {
+        marginTop: 20,
+  },
+  button: {
         marginHorizontal: 30,
-    },
-    textContainer: {
-        paddingHorizontal: 16,
-        paddingBottom: 16,
-    },
-    thumbnail: {
-        height: 40,
-        width: 30,
-        borderRadius: 80,
-    },
-    picture: {
-        height: 120,
-        width: 150,
-        borderRadius: 0,
-    },
-
-    photoContainer: {
-        flexDirection: 'column',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-    },
+  },
+  card: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  titleText: {
+    //marginTop: 15, 
+    //marginBottom: 15
+  },
 });
 
 export default JobDetailsView;

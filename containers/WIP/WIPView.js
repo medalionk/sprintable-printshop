@@ -1,26 +1,15 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  ListView,
-  View,
-  Dimensions,
-  ActivityIndicator,
 } from 'react-native';
 
 import { strings } from '../../strings';
-import { colors } from '../../styles';
-
-import Row from '../../components/Job/JobRowComponent'
-import Footer from '../../components/Footer/FooterComponent'
+import JobsListComponent from '../../components/Job/JobsListComponent';
+import LoadingIndicator from '../../components/Misc/LoadingIndicator';
+import ErrorIndicator from '../../components/Misc/ErrorIndicator';
 import Toolbar from '../../components/Toolbar/ToolbarSearchableComponent';
 import Container from '../../containers';
 import JobProgressView from '../Jobs/JobProgressViewContainer'
-
-const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-});
-
-const height = Dimensions.get('window').height;
 
 class WIPView extends Component {
   constructor(props) {
@@ -31,44 +20,31 @@ class WIPView extends Component {
         this.props.fetchWIP();
   }
 
-  viewJob(id){
+  jobProgress(id){
         this.props.navigator.push({
           Page: JobProgressView, 
-          props: { jobId:id }})
+          props: { id:id }})
   }
 
   render() {
     return (
       <Container>
         <Toolbar route={{title: strings.wip}} navigator={this.props.navigator}/>
-        {
-          this.props.isFetching && 
-          <ActivityIndicator
-            animating={true}
-            style = {styles.activityIndicator}
-            size="large"
-            color="#00aa00"
-          />
-        }
-        {
-          this.props.error && <Text>Error!!!</Text>
-        }
-        {
-          this.props.data ? (
-            <View style={styles.container}>
-                <ListView
-                  style={styles.container}
-                  dataSource={ds.cloneWithRows(this.props.data)}
-                  renderRow={(d) => <Row data={d} onPress={(id) => this.viewJob(id)} />}
-                  renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                  //renderFooter={() => <Footer />}d
-                  enableEmptySections={true}
-                  on
-                />       
-          </View>
-          )
-          :null
-        }
+          {
+            this.props.isFetching && <LoadingIndicator/>
+          }
+          {
+            this.props.error && <ErrorIndicator/>
+          }
+          {
+            this.props.data ? (
+              <JobsListComponent 
+                data={this.props.data}
+                onPressHandler={this.jobProgress.bind(this)}
+                navigator={this.props.navigator}/>
+            )
+            :null
+          }
       </Container>
     );
   }
@@ -78,17 +54,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  separator: {
-    flex: 1,
-    height: 5,
-    backgroundColor: colors.transparent,
-  },
-  activityIndicator: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: height * 0.8,
-   },
 });
 
 
