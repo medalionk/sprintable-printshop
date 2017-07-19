@@ -29,6 +29,7 @@ class App extends Component {
                 <route.Page
                     route={route}
                     navigator={navigator}
+                    {... route.props}
                 />
             </Container>
         );
@@ -39,7 +40,6 @@ class App extends Component {
         }
     }
     render() {
-        const { jobs, loading } = this.props;
         return (
             <ThemeProvider uiTheme={uiTheme}>
                 <Navigator

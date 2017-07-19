@@ -3,13 +3,14 @@ import {
   StyleSheet,
   ListView,
   View,
-  Dimensions
+  Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 
 import { strings } from '../../strings';
 import { colors } from '../../styles';
 
-import Row from '../../components/Row/JobRowComponent'
+import Row from '../../components/Job/JobRowComponent'
 import Footer from '../../components/Footer/FooterComponent'
 import Toolbar from '../../components/Toolbar/ToolbarSearchableComponent';
 import Container from '../../containers';
@@ -31,7 +32,9 @@ class WIPView extends Component {
   }
 
   viewJob(id){
-        this.props.navigator.push({title: strings.progress, Page: JobProgressView})
+        this.props.navigator.push({
+          Page: JobProgressView, 
+          props: { jobId:id }})
   }
 
   render() {
@@ -51,14 +54,15 @@ class WIPView extends Component {
           this.props.error && <Text>Error!!!</Text>
         }
         {
-          this.props.data.results ? (
+          this.props.data ? (
             <View style={styles.container}>
                 <ListView
                   style={styles.container}
-                  dataSource={ds.cloneWithRows(this.props.data.results)}
+                  dataSource={ds.cloneWithRows(this.props.data)}
                   renderRow={(d) => <Row data={d} onPress={(id) => this.viewJob(id)} />}
                   renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                  renderFooter={() => <Footer />}
+                  //renderFooter={() => <Footer />}d
+                  enableEmptySections={true}
                   on
                 />       
           </View>

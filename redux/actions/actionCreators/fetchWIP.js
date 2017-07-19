@@ -12,7 +12,7 @@ export const fetchWIP = () => (dispatch, getState) => {
   
   return axios({
     method: 'get',
-    url: `${API_URL}`,
+    url: `${API_URL}/jobs/wip`,
   })
   .then(({data}) => {
     console.log('fetch wip success: ', data);

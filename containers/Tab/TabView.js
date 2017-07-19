@@ -11,6 +11,9 @@ import JobDetailsView from '../../containers/Jobs/JobDetailsViewContainer'
 const SecondRoute = () => <View style={[ styles.container, { backgroundColor: '#673ab7' } ]} />;
 
 class TabView extends PureComponent {
+  constructor(props) {
+        super(props);
+    }
   state = {
     index: 0,
     routes: [
@@ -37,7 +40,7 @@ class TabView extends PureComponent {
     };
 
     _renderScene = SceneMap({
-        '1': () => <JobDetailsView navigator={this.props.navigator}/>,
+        '1': () => <JobDetailsView navigator={this.props.navigator} jobId={this.props.jobId}/>,
         '2': SecondRoute,
     });
 

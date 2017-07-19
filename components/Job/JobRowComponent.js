@@ -36,6 +36,9 @@ class RowComponent extends Component {
                   <Text style={styles.quantityText}>{this.props.data.quantity}</Text>
                 </Row>
                 <Row>
+                  <Text style={styles.statusText}>{this.props.data.status}</Text>
+                </Row>
+                <Row>
                   <Text style={styles.descriptionText}>{this.props.data.description}</Text>
                 </Row>
               </Col>
@@ -53,10 +56,6 @@ class RowComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  textContainer: {
-        paddingHorizontal: 16,
-        paddingBottom: 16,
   },
   thumbnail: {
     height: 50, 
@@ -83,6 +82,9 @@ const styles = StyleSheet.create({
   priceText: {
     color: 'green',
     fontStyle: 'italic'
+  },
+  statusText: {
+    
   },
   descriptionText: {
     color: 'grey'

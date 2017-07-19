@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  ListView,
-  View,
   Text,
   ActivityIndicator,
   Dimensions
 } from 'react-native';
 
 import { strings } from '../../strings';
-import { colors } from '../../styles';
-
+import JobsListComponent from '../../components/Job/JobsListComponent';
 import Toolbar from '../../components/Toolbar/ToolbarSearchableComponent';
-import Row from '../../components/Row/JobRowComponent'
-import Footer from '../../components/Footer/FooterComponent'
 import Container from '../../containers';
 import TabView from '../Tab/TabViewContainer'
-
-const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-});
 
 const height = Dimensions.get('window').height;
 
@@ -33,7 +24,10 @@ class JobsView extends Component {
   }
 
   viewJob(id){
-        this.props.navigator.push({title: strings.details, Page: TabView, navigator:this.props.navigator})
+        this.props.navigator.push({ 
+          Page: TabView, 
+          props: { jobId:id }
+        })
   }
 
   render() {
@@ -54,17 +48,10 @@ class JobsView extends Component {
         }
         {
           this.props.data ? (
-            <View style={styles.container}>
-                <ListView
-                  style={styles.container}
-                  dataSource={ds.cloneWithRows(this.props.data)}
-                  renderRow={(d) => <Row data={d} onPress={(id) => this.viewJob(id)} />}
-                  renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                  renderFooter={() => <Footer />}
-                  enableEmptySections={true}
-                  on
-                />       
-          </View>
+            <JobsListComponent 
+              data={this.props.data}
+              onPressHandler={this.viewJob.bind(this)}
+              navigator={this.props.navigator}/>
           )
           :null
         }
@@ -76,11 +63,6 @@ class JobsView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  separator: {
-    flex: 1,
-    height: 5,
-    backgroundColor: colors.transparent,
   },
   activityIndicator: {
       flex: 1,
