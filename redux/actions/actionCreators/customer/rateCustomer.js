@@ -3,8 +3,8 @@ import {
   ACCEPT_JOB_START,
   ACCEPT_JOB_SUCCESS,
   ACCEPT_JOB_FAILURE,
-} from '../actionTypes';
-import { API_URL } from '../../../config/constants';
+} from '../../actionTypes';
+import { API_URL } from '../../../../config/constants';
 
 export const acceptJob = (id) => (dispatch, getState) => {
   console.log('accept job start');

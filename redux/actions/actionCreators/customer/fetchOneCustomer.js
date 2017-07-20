@@ -3,8 +3,8 @@ import {
   FETCH_JOBS_START,
   FETCH_JOBS_SUCCESS,
   FETCH_JOBS_FAILURE,
-} from '../actionTypes';
-import { API_URL } from '../../../config/constants';
+} from '../../actionTypes';
+import { API_URL } from '../../../../config/constants';
 
 export const fetchJobs = () => (dispatch, getState) => {
   console.log('fetch jobs start');

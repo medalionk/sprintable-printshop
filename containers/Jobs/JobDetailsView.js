@@ -8,7 +8,6 @@ import Toolbar from '../../components/Toolbar/ToolbarBackComponent';
 import JobComponent from '../../components/Job/JobComponent';
 import Container from '../../containers';
 
-
 class JobDetailsView extends Component {
   constructor(props) {
         super(props);

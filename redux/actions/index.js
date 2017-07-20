@@ -4,8 +4,8 @@ import {
   login,
   logout
 } from './actionCreators/authentication';
-import { fetchJobs } from './actionCreators/fetchJobs';
-import { fetchWIP } from './actionCreators/fetchWIP';
+import { fetchJobs } from './actionCreators/jobs/fetchJobs';
+import { fetchWIP } from './actionCreators/jobs/fetchWIP';
 
 export {
   initializeSession,

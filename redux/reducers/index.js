@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
 import AuthReducer from './Auth';
-import JobsReducer from './Jobs';
-import WIPReducer from './WIP';
-import AcceptJobReducer from './AcceptJob';
+import {
+  JobsReducer, 
+  JobActionReducer,
+} from './Jobs';
 
 const rootReducer = combineReducers({
   auth: AuthReducer,
   jobs: JobsReducer,
-  wip: WIPReducer,
+  action: JobActionReducer,
   accept: AcceptJobReducer,
 });
 

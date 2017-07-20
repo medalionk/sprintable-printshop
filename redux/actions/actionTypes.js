@@ -10,15 +10,30 @@ export const FETCH_JOBS_START = 'FETCH_JOBS_START';
 export const FETCH_JOBS_SUCCESS = 'FETCH_JOBS_SUCCESS';
 export const FETCH_JOBS_FAILURE = 'FETCH_JOBS_FAILURE';
 
+/*** Fetch a Job ***/
+export const FETCH_JOB_START = 'FETCH_JOB_START';
+export const FETCH_JOB_SUCCESS = 'FETCH_JOB_SUCCESS';
+export const FETCH_JOB_FAILURE = 'FETCH_JOB_FAILURE';
+
 /*** Fetch WIP ***/
 export const FETCH_WIP_START = 'FETCH_WIP_START';
 export const FETCH_WIP_SUCCESS = 'FETCH_WIP_SUCCESS';
 export const FETCH_WIP_FAILURE = 'FETCH_WIP_FAILURE';
 
-/*** Fetch WIP ***/
+/*** Accept Job ***/
 export const ACCEPT_JOB_START = 'ACCEPT_JOB_START';
 export const ACCEPT_JOB_SUCCESS = 'ACCEPT_JOB_SUCCESS';
 export const ACCEPT_JOB_FAILURE = 'ACCEPT_JOB_FAILURE';
+
+/*** Reject Job ***/
+export const REJECT_JOB_START = 'REJECT_JOB_START';
+export const REJECT_JOB_SUCCESS = 'REJECT_JOB_SUCCESS';
+export const REJECT_JOB_FAILURE = 'REJECT_JOB_FAILURE';
+
+/*** Reject Job ***/
+export const CLOSE_JOB_START = 'CLOSE_JOB_START';
+export const CLOSE_JOB_SUCCESS = 'CLOSE_JOB_SUCCESS';
+export const CLOSE_JOB_FAILURE = 'CLOSE_JOB_FAILURE';
 
 // Session
 export const INITIALIZE_SESSION = 'INITIALIZE_SESSION';

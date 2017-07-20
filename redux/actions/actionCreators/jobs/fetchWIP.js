@@ -3,8 +3,8 @@ import {
   FETCH_WIP_START,
   FETCH_WIP_SUCCESS,
   FETCH_WIP_FAILURE,
-} from '../actionTypes';
-import { API_URL } from '../../../config/constants';
+} from '../../actionTypes';
+import { API_URL } from '../../../../config/constants';
 
 export const fetchWIP = () => (dispatch, getState) => {
   console.log('fetch wip start');
