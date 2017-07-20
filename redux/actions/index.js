@@ -2,10 +2,17 @@ import {
   initializeSession,
   resetSession,
   login,
-  logout
+  logout,
 } from './actionCreators/authentication';
-import { fetchJobs } from './actionCreators/jobs/fetchJobs';
-import { fetchWIP } from './actionCreators/jobs/fetchWIP';
+
+import { 
+  fetchJobs,
+  fetchJob,
+  fetchWIP,
+  acceptJob,
+  rejectJob,
+  closeJob,
+ } from './actionCreators/jobs';
 
 export {
   initializeSession,
@@ -13,5 +20,9 @@ export {
   login,
   logout,
   fetchJobs,
+  fetchJob,
   fetchWIP,
+  closeJob,
+  acceptJob,
+  rejectJob,
 };

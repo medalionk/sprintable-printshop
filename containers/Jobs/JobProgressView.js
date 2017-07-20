@@ -13,6 +13,9 @@ class JobView extends Component {
         super(props);
     }
 
+  componentDidMount() {
+        this.props.fetchJob(this.props.id);
+  }
   render() {
     return (
       <Container>
@@ -21,7 +24,7 @@ class JobView extends Component {
             <Card 
                 containerStyle={styles.card}
                 titleStyle={styles.titleText}
-                title="this.props.data.title">
+                title="this.props.dataaa.title">
                 <JobComponent  id={this.props.id} navigator={this.props.navigator}/>
                 <View style={styles.rowContainer}>
                   <View style={styles.button}>

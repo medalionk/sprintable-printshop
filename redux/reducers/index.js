@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
   auth: AuthReducer,
   jobs: JobsReducer,
   action: JobActionReducer,
-  accept: AcceptJobReducer,
 });
 
 export default rootReducer;
