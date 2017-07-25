@@ -5,10 +5,10 @@ import { fetchWIP } from '../../redux/actions';
 import WIPView from './WIPView';
 
 const mapStateToProps = (state, ownProps) => ({
-    data: state.jobs.data,
-    dataFetched: state.jobs.dataFetched,
-    isFetching: state.jobs.isFetching,
-    error: state.jobs.error,
+    data: state.wip.data,
+    dataFetched: state.wip.dataFetched,
+    isFetching: state.wip.isFetching,
+    error: state.wip.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({

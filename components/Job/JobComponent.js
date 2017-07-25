@@ -1,38 +1,62 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity  } from 'react-native';
 
-import { strings } from '../../strings';////
 import Container from '../../containers';
 import ProfilePage from '../../containers/Profile/ClientViewContainer'
 
 var {height, width} = Dimensions.get('window');
 
-const viewClient = (navigator) => {
-     navigator.push({title: 'Profile', Page: ProfilePage})
-} 
+class JobComponent extends Component {
+  constructor(props) {
+        super(props);
+    }
+  
+    viewClient(){
+      this.navigator.push({title: 'Profile', Page: ProfilePage})
+    } 
 
-const JobComponent = (props) => {
-  return (
+    render() {
+      return (
            <Container> 
               <View style={styles.profileImage}>
-                    <TouchableOpacity onPress={() => viewClient(props.navigator)}>
+                    <TouchableOpacity onPress={() => this.viewClient(props.navigator)}>
                         <Image
-                          source={{ uri: strings.profilePicLink}}
+                          source={{ uri: this.props.data.customer.thumbnail}}
                           style={styles.thumbnail}
                         />
                       </TouchableOpacity>
                   </View>
-                  <Text style={[styles.nameText, styles.centerText]}>h1 Heading</Text>
-                  <Text style={[styles.priceText, styles.centerText]}>h2 Heading</Text>
-                  <Text style={[styles.quantityText, styles.centerText]}>h3 Heading</Text>
-                  <Text style={[styles.statusText, styles.centerText]}>h4 Heading</Text>
-                  <Text style={[styles.descriptionText, styles.centerText]}>Normal Text</Text>
-                  <Text style={[styles.descriptionText, styles.centerText]}>{props.id}</Text>
+                  <Text style={[styles.nameText, styles.centerText]}>
+                    {this.props.data.customer.name}
+                  </Text>
+                  <Text style={[styles.priceText]}>
+                    Price: {this.props.data.price}
+                  </Text>
+                  <Text style={[styles.quantityText]}>
+                    Quantity: {this.props.data.quantity}
+                  </Text>
+                  <Text style={[styles.text]}>
+                    Order Created: {this.props.data.created_date}
+                  </Text>
+                  <Text style={[styles.text]}>
+                    Delivery Date: {this.props.data.delivery_date}
+                  </Text>
+                  <Text style={[styles.text]}>
+                    Delivery Address: {this.props.data.delivery_address}
+                  </Text>
+                  <Text style={[styles.descriptionText]}>
+                    Note: {this.props.data.description}
+                  </Text>
+                  <Text style={[styles.statusText]}>
+                    Status: {this.props.data.status}
+                  </Text>
                   <View>
-                    <Image source={{ uri: strings.imageLink}} style={styles.picture} />
+                    <Image source={{ uri: this.props.data.image}} style={styles.picture} />
                   </View>
            </Container>
-  );
+        );
+  }
+    
 }
 
 const styles = StyleSheet.create({
@@ -63,17 +87,20 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   quantityText: {
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
   },
   priceText: {
-    color: 'green',
     fontStyle: 'italic',
   },
   statusText: {
-    
+    color: 'green',
+    fontWeight: 'bold',
   },
   descriptionText: {
     color: 'grey',
+  },
+  text: {
+    
   },
 });
 

@@ -7,7 +7,7 @@ import {
 import { API_URL } from '../../../../config/constants';
 
 export const fetchJob = (id) => (dispatch, getState) => {
-  console.log('fetch one job start');
+  console.log('fetch one job start:', id);
   dispatch({
     type: FETCH_JOB_START,
     id

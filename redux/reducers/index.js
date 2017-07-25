@@ -1,14 +1,22 @@
 import { combineReducers } from 'redux';
 import AuthReducer from './Auth';
 import {
-  JobsReducer, 
-  JobActionReducer,
-} from './Jobs';
+  AcceptJobReducer,
+  CloseJobReducer,
+  FetchJobReducer,
+  FecthJobsReducer,
+  FetchWIPReducer,
+  RejectJobReducer,
+} from './job';
 
 const rootReducer = combineReducers({
   auth: AuthReducer,
-  jobs: JobsReducer,
-  action: JobActionReducer,
+  accept: AcceptJobReducer,
+  close: CloseJobReducer,
+  job: FetchJobReducer,
+  jobs: FecthJobsReducer,
+  wip: FetchWIPReducer,
+  reject: RejectJobReducer,
 });
 
 export default rootReducer;
